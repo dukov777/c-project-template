@@ -1,0 +1,40 @@
+# File: config/Kconfig.features
+menu "Feature Configuration"
+
+config NETWORKING
+    bool "Enable networking support"
+    default n
+    help
+      Enable basic networking capabilities
+
+if NETWORKING
+
+config TCP_SUPPORT
+    bool "TCP protocol support"
+    default y
+    help
+      Enable TCP protocol support
+
+config UDP_SUPPORT
+    bool "UDP protocol support"
+    default y
+    help
+      Enable UDP protocol support
+
+endif # NETWORKING
+
+config ENABLE_SERVER
+    bool "Enable server functionality"
+    depends on NETWORKING && TCP_SUPPORT
+    default n
+    help
+      Enables server functionality
+
+config FILE_OPERATIONS
+    bool "Enable file operations"
+    default y
+    help
+      Enable file read/write operations
+
+endmenu
+

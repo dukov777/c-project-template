@@ -1,0 +1,31 @@
+# Main Kconfig file
+mainmenu "My Project Configuration"
+
+# Version configuration
+config PROJECT_VERSION_MAJOR
+    int "Major version"
+    default 1
+
+config PROJECT_VERSION_MINOR
+    int "Minor version"
+    default 0
+
+# Debug menu - completely contained in this file
+menu "Debug options"
+    config DEBUG
+        bool "Enable debugging"
+        default n
+        help
+          Enable debug output and assertions
+
+    config VERBOSE_LOGGING
+        bool "Enable verbose logging"
+        depends on DEBUG
+        default n
+        help
+          Enable more detailed logging output
+endmenu
+
+# Include other Kconfig files
+source "config/Kconfig.features"
+
